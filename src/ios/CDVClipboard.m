@@ -20,7 +20,8 @@
 - (void)paste:(CDVInvokedUrlCommand*)command {
 	[self.commandDelegate runInBackground:^{
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-		NSString     *text       = [pasteboard valueForPasteboardType:@"public.plain-text"];
+		// NSString     *text       = [pasteboard valueForPasteboardType:@"public.plain-text"]; // paste string: {length = 26, bytes = 0xfffe4300 44005600 43006c00 69007000 ... 6f006100 72006400 }
+	        NSString *text = pasteboard.string;
 		if (text == nil) {
 			text = @"";
 		}
